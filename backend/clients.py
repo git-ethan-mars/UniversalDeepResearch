@@ -76,6 +76,17 @@ MODEL_CONFIGS: Dict[str, ModelConfig] = {
             "stream": True,
         },
     },
+    "mistral-large-latest": {
+        "base_url": "https://api.mistral.ai/v1",
+        "api_type": "mistral",
+        "completion_config": {
+            "model": "mistral-large-latest",
+            "temperature": 0.2,
+            "top_p": 0.7,
+            "max_tokens": 2048,
+            "stream": True,
+        },
+    },
 }
 
 # Default model to use (from configuration)
@@ -107,6 +118,7 @@ def get_api_key(api_type: ApiType) -> str:
         "nvdev": config.model.api_key_file,
         "openai": "openai_api.txt",
         "tavily": config.search.tavily_api_key_file,
+        "mistral": "mistralai_api.txt"
     }
 
     key_file = api_key_files.get(api_type)
